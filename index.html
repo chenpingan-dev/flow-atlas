@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="An interactive dependency planner. Explore critical paths, worker schedules and bottlenecks in your browser."
+    />
+    <title>Flow Atlas · A map for your next workflow</title>
+    <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <aside class="sidebar">
+        <a class="brand" href="./"
+          ><span class="brand-mark">⌘</span>Flow Atlas</a
+        >
+        <div>
+          <p class="sidebar-label">Workspace</p>
+          <nav class="side-nav" aria-label="Workspace">
+            <a class="side-item active" href="#planner"
+              ><span class="menu-icon" aria-hidden="true"
+                ><svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="3" y="3" width="7" height="7" rx="1" />
+                  <rect x="14" y="3" width="7" height="7" rx="1" />
+                  <rect x="3" y="14" width="7" height="7" rx="1" />
+                  <rect x="14" y="14" width="7" height="7" rx="1" /></svg></span
+              ><span class="menu-text">Dependency map</span></a
+            ><a class="side-item" href="#timeline"
+              ><span class="menu-icon" aria-hidden="true"
+                ><svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M4 7h16m-4-4 4 4-4 4M20 17H4m4-4-4 4 4 4"
+                  /></svg></span
+              ><span class="menu-text">Worker timeline</span></a
+            ><a
+              class="side-item"
+              href="https://github.com/honggege957-collab/flow-atlas#readme"
+              target="_blank"
+              rel="noreferrer"
+              ><span class="menu-icon" aria-hidden="true"
+                ><svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M4 4h7v16H4zM14 4h6v16h-6z" /></svg></span
+              ><span class="menu-text">Documentation</span></a
+            >
+          </nav>
+        </div>
+
+        <div class="side-foot">OPEN SOURCE / v0.1.0</div>
+      </aside>
+      <main class="content">
+        <header class="topbar">
+          <div class="breadcrumb">
+            Workspace <span>/ Workflow planner</span>
+          </div>
+          <span class="badge"><span class="dot"></span> LOCAL SIMULATION</span>
+        </header>
+        <section class="workspace-head">
+          <div>
+            <h1>Workflow planner</h1>
+            <p>Manage task dependencies and explore worker schedules.</p>
+          </div>
+          <div class="actions">
+            <button class="button" id="import">↑ Import</button
+            ><button class="button" id="export">↓ Export</button
+            ><button class="button primary" id="add">＋ Add task</button
+            ><input
+              id="file"
+              type="file"
+              accept=".json,application/json"
+              hidden
+            />
+          </div>
+        </section>
+        <section class="stats" aria-label="Schedule metrics">
+          <div class="stat">
+            <div class="label">Tasks / dependencies</div>
+            <div class="value" id="stat-tasks">—</div>
+            <div class="detail">A directed acyclic graph</div>
+          </div>
+          <div class="stat">
+            <div class="label">Critical path</div>
+            <div class="value" id="stat-critical">—</div>
+            <div class="detail">Dependency lower bound</div>
+          </div>
+          <div class="stat">
+            <div class="label">Scheduled duration</div>
+            <div class="value" id="stat-duration">—</div>
+            <div class="detail" id="stat-duration-detail">With 3 workers</div>
+          </div>
+          <div class="stat">
+            <div class="label">Worker utilization</div>
+            <div class="value" id="stat-utilization">—</div>
+            <div class="detail">Busy time / available time</div>
+          </div>
+        </section>
+        <div class="toolbar">
+          <div class="actions">
+            <label class="muted" for="sample">Example</label
+            ><select id="sample">
+              <option value="deployment">Preview deployment</option>
+              <option value="pipeline">Data pipeline</option>
+              <option value="build">Parallel build</option></select
+            ><button class="button small" id="reset">Reset example</button>
+          </div>
+          <div class="actions">
+            <label class="muted" for="workers">Workers</label
+            ><select id="workers">
+              <option>1</option>
+              <option>2</option>
+              <option selected>3</option>
+              <option>4</option>
+              <option>6</option>
+              <option>8</option>
+            </select>
+          </div>
+        </div>
+        <div class="planner" id="planner">
+          <section class="panel">
+            <div class="panel-head">
+              <h2 id="graph-name">Dependency map</h2>
+              <div class="legend">
+                <span><i class="critical-dot"></i> Critical</span
+                ><span><i class="running-dot"></i> Running</span>
+              </div>
+            </div>
+            <div class="graph-scroll">
+              <div id="graph" class="graph">
+                <svg id="edges" aria-hidden="true"></svg>
+                <div id="nodes"></div>
+              </div>
+            </div>
+            <div class="graph-foot">
+              <span>Click a task to inspect and edit it</span
+              ><span id="graph-state">Ready to explore</span>
+            </div>
+          </section>
+          <section class="panel detail-panel">
+            <div class="panel-head">
+              <h2>Task inspector</h2>
+              <span class="chip" id="task-state">ready</span>
+            </div>
+            <form id="edit-task">
+              <div class="inspector-body">
+                <p class="task-id" id="task-id"></p>
+                <label class="field"
+                  >Task label<input
+                    id="edit-label"
+                    maxlength="80"
+                    required /></label
+                ><label class="field"
+                  >Duration (seconds)<input
+                    id="edit-duration"
+                    type="number"
+                    min="0.01"
+                    max="3600"
+                    step="0.01"
+                    required /></label
+                ><label class="field"
+                  >Dependencies<input
+                    id="edit-deps"
+                    placeholder="build, unit"
+                  /><span class="help"
+                    >Task IDs, separated by commas</span
+                  ></label
+                >
+                <div class="task-metrics">
+                  <div>
+                    <span>Earliest start</span
+                    ><strong id="task-start">—</strong>
+                  </div>
+                  <div>
+                    <span>Slack</span><strong id="task-slack">—</strong>
+                  </div>
+                  <div>
+                    <span>Critical path</span
+                    ><strong id="task-critical">—</strong>
+                  </div>
+                </div>
+                <button class="button primary" type="submit">
+                  Apply changes</button
+                ><button class="button danger" type="button" id="remove">
+                  Remove task
+                </button>
+              </div>
+            </form>
+          </section>
+        </div>
+        <section class="panel timeline-panel" id="timeline">
+          <div class="panel-head">
+            <h2>Worker timeline</h2>
+            <div class="actions">
+              <select id="speed" aria-label="Playback speed">
+                <option value="1">1× speed</option>
+                <option value="2" selected>2× speed</option>
+                <option value="4">4× speed</option></select
+              ><button class="button small" id="rewind">↺ Reset</button
+              ><button class="button small primary" id="play">▶ Play</button>
+            </div>
+          </div>
+          <div class="playback">
+            <span class="mono" id="time">0.0 / 0.0 s</span
+            ><label class="sr-only" for="scrub">Simulation time</label
+            ><input
+              id="scrub"
+              type="range"
+              min="0"
+              max="1"
+              step="0.05"
+              value="0"
+            /><span id="completed" class="muted">0 complete</span>
+          </div>
+          <div class="timeline-body" id="lanes"></div>
+          <div class="timeline-scale" id="scale"></div>
+        </section>
+        <div id="status" class="status" role="status" aria-live="polite"></div>
+        <footer>
+          <span>Flow Atlas</span
+          ><a
+            href="https://github.com/honggege957-collab/flow-atlas"
+            target="_blank"
+            rel="noreferrer"
+            >View source</a
+          >
+        </footer>
+      </main>
+    </div>
+    <dialog id="add-dialog">
+      <form id="new-task">
+        <h2>Add a task</h2>
+        <label class="field"
+          >Task ID<input
+            id="new-id"
+            pattern="[a-zA-Z0-9_-]{1,32}"
+            maxlength="32"
+            required
+            placeholder="publish" /></label
+        ><label class="field"
+          >Label<input
+            id="new-label"
+            maxlength="80"
+            required
+            placeholder="Publish preview" /></label
+        ><label class="field"
+          >Duration (seconds)<input
+            id="new-duration"
+            type="number"
+            min="0.01"
+            max="3600"
+            step="0.01"
+            value="3"
+            required /></label
+        ><label class="field"
+          >Dependencies<input id="new-deps" placeholder="bundle"
+        /></label>
+        <p id="new-error" class="status error" role="status"></p>
+        <div class="actions">
+          <button class="button" type="button" id="cancel">Cancel</button
+          ><button class="button primary" type="submit">Add task</button>
+        </div>
+      </form>
+    </dialog>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

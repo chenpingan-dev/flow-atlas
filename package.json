@@ -1,0 +1,20 @@
+{
+  "name": "flow-atlas",
+  "version": "0.1.0",
+  "description": "An interactive DAG planner with critical-path analysis and a worker timeline.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "test": "node --test",
+    "build": "node scripts/build.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/honggege957-collab/flow-atlas.git"
+  },
+  "private": true
+}

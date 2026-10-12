@@ -1,0 +1,33 @@
+{
+  "name": "Parallel package build",
+  "tasks": [
+    { "id": "install", "label": "Install tools", "duration": 3, "deps": [] },
+    { "id": "core", "label": "Build core", "duration": 5, "deps": ["install"] },
+    {
+      "id": "icons",
+      "label": "Build icons",
+      "duration": 2,
+      "deps": ["install"]
+    },
+    {
+      "id": "tokens",
+      "label": "Build tokens",
+      "duration": 2,
+      "deps": ["install"]
+    },
+    {
+      "id": "ui",
+      "label": "Build UI",
+      "duration": 6,
+      "deps": ["core", "icons", "tokens"]
+    },
+    { "id": "docs", "label": "Build docs", "duration": 4, "deps": ["ui"] },
+    { "id": "tests", "label": "Browser tests", "duration": 5, "deps": ["ui"] },
+    {
+      "id": "publish",
+      "label": "Pack artifacts",
+      "duration": 2,
+      "deps": ["docs", "tests"]
+    }
+  ]
+}

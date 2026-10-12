@@ -1,0 +1,48 @@
+{
+  "name": "Preview deployment",
+  "tasks": [
+    { "id": "checkout", "label": "Checkout", "duration": 2, "deps": [] },
+    {
+      "id": "lint",
+      "label": "Lint & types",
+      "duration": 3,
+      "deps": ["checkout"]
+    },
+    {
+      "id": "unit",
+      "label": "Unit tests",
+      "duration": 6,
+      "deps": ["checkout"]
+    },
+    {
+      "id": "build",
+      "label": "Build assets",
+      "duration": 8,
+      "deps": ["checkout"]
+    },
+    {
+      "id": "integration",
+      "label": "Integration",
+      "duration": 5,
+      "deps": ["build"]
+    },
+    {
+      "id": "scan",
+      "label": "Artifact checks",
+      "duration": 3,
+      "deps": ["build"]
+    },
+    {
+      "id": "bundle",
+      "label": "Bundle release",
+      "duration": 2,
+      "deps": ["lint", "unit", "integration", "scan"]
+    },
+    {
+      "id": "preview",
+      "label": "Deploy preview",
+      "duration": 3,
+      "deps": ["bundle"]
+    }
+  ]
+}

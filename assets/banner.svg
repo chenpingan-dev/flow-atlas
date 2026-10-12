@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="350" viewBox="0 0 1200 350" role="img" aria-label="Flow Atlas">
+<rect width="1200" height="350" rx="12" fill="#f2f5fa"/><rect width="18" height="350" rx="6" fill="#1677ff"/>
+<rect x="62" y="52" width="43" height="43" rx="9" fill="#1677ff"/><text x="83" y="82" fill="white" text-anchor="middle" font-family="Arial,sans-serif" font-size="25" font-weight="700">↗</text>
+<text x="123" y="82" fill="#526078" font-family="Arial,sans-serif" font-size="17" letter-spacing="2">INDEPENDENT DEVELOPER TOOLS</text>
+<text x="60" y="175" fill="#15233a" font-family="Arial,sans-serif" font-size="70" font-weight="700">Flow Atlas</text>
+<text x="64" y="220" fill="#335075" font-family="Arial,sans-serif" font-size="20" letter-spacing="1">DEPENDENCIES / TIMELINE</text>
+<rect x="64" y="262" width="92" height="29" rx="5" fill="#e2edff"/><text x="78" y="281" fill="#165cbd" font-family="Arial,sans-serif" font-size="12" font-weight="700">ZH / EN</text>
+<text x="178" y="281" fill="#526078" font-family="Arial,sans-serif" font-size="13">MIT · LIVE DEMO · v0.1.0</text>
+<rect x="820" y="80" width="292" height="204" rx="10" fill="#fff" stroke="#d8e0eb"/><rect x="820" y="80" width="292" height="32" rx="10" fill="#eaf2ff"/><circle cx="837" cy="96" r="3" fill="#1677ff"/><rect x="851" y="93" width="70" height="6" rx="3" fill="#abc8f5"/><path d="M874 190h38l22-43h59M912 190l22 43h59M1012 147l28 43-28 43" stroke="#78a9ed" stroke-width="2" fill="none"/><g fill="#eaf2ff" stroke="#1677ff"><rect x="846" y="173" width="38" height="34" rx="5"/><rect x="951" y="130" width="61" height="34" rx="5"/><rect x="951" y="216" width="61" height="34" rx="5"/><rect x="1039" y="173" width="48" height="34" rx="5" fill="#1677ff"/></g></svg>

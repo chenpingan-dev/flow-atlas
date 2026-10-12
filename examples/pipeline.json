@@ -1,0 +1,27 @@
+{
+  "name": "Synthetic data pipeline",
+  "tasks": [
+    { "id": "events", "label": "Load events", "duration": 4, "deps": [] },
+    { "id": "catalog", "label": "Load catalog", "duration": 3, "deps": [] },
+    { "id": "clean", "label": "Normalize", "duration": 6, "deps": ["events"] },
+    {
+      "id": "join",
+      "label": "Join records",
+      "duration": 4,
+      "deps": ["clean", "catalog"]
+    },
+    {
+      "id": "aggregate",
+      "label": "Aggregate",
+      "duration": 5,
+      "deps": ["join"]
+    },
+    { "id": "validate", "label": "Validate", "duration": 2, "deps": ["join"] },
+    {
+      "id": "export",
+      "label": "Write snapshot",
+      "duration": 3,
+      "deps": ["aggregate", "validate"]
+    }
+  ]
+}
