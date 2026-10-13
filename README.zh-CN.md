@@ -2,7 +2,7 @@
 
 用依赖图和时间轴，理解任务排期、关键路径与并行执行。
 
-[在线演示](https://honggege957-collab.github.io/flow-atlas/) · [English](README.md)
+[在线演示](https://chenpingan-dev.github.io/flow-atlas/) · [English](README.md)
 
 ![项目实际运行截图](assets/screenshot.png)
 
@@ -19,7 +19,7 @@
 需要 Node.js 22 或以上，无需外部运行时依赖。
 
 ```bash
-git clone https://github.com/honggege957-collab/flow-atlas.git
+git clone https://github.com/chenpingan-dev/flow-atlas.git
 cd flow-atlas
 npm ci
 npm start

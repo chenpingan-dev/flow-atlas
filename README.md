@@ -1,6 +1,6 @@
 ![Flow Atlas](assets/banner.svg)
 
-[![CI](https://github.com/honggege957-collab/flow-atlas/actions/workflows/ci.yml/badge.svg)](https://github.com/honggege957-collab/flow-atlas/actions/workflows/ci.yml) ![License: MIT](https://img.shields.io/badge/License-MIT-7de2d1) ![Node.js 22+](https://img.shields.io/badge/Node.js-22%2B-8fa3bf)
+[![CI](https://github.com/chenpingan-dev/flow-atlas/actions/workflows/ci.yml/badge.svg)](https://github.com/chenpingan-dev/flow-atlas/actions/workflows/ci.yml) ![License: MIT](https://img.shields.io/badge/License-MIT-7de2d1) ![Node.js 22+](https://img.shields.io/badge/Node.js-22%2B-8fa3bf)
 
 # Flow Atlas
 
@@ -8,7 +8,7 @@ An interactive map of dependencies, critical paths and worker schedules.
 
 用依赖图和时间轴，理解任务排期、关键路径与并行执行。
 
-**[Live demo](https://honggege957-collab.github.io/flow-atlas/)** · **[中文说明](README.zh-CN.md)** · [Contributing](CONTRIBUTING.md) · [Changelog](CHANGELOG.md)
+**[Live demo](https://chenpingan-dev.github.io/flow-atlas/)** · **[中文说明](README.zh-CN.md)** · [Contributing](CONTRIBUTING.md) · [Changelog](CHANGELOG.md)
 
 ![Working application screenshot](assets/screenshot.png)
 
@@ -27,7 +27,7 @@ An interactive map of dependencies, critical paths and worker schedules.
 Requires **Node.js 22+**. No external packages are required to run the app.
 
 ```bash
-git clone https://github.com/honggege957-collab/flow-atlas.git
+git clone https://github.com/chenpingan-dev/flow-atlas.git
 cd flow-atlas
 npm ci
 npm start
