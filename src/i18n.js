@@ -149,11 +149,11 @@ const translations = {
   "With 3 workers": "使用 3 个工作线程",
   "Worker utilization": "并行利用率",
   "Busy time / available time": "任务耗时 / 可用时间",
-  Example: "示例方案",
+  Example: "工作流模板",
   "Preview deployment": "预览部署",
   "Data pipeline": "数据流水线",
   "Parallel build": "并行构建",
-  "Reset example": "重置示例",
+  "Reset example": "重置流程",
   Workers: "并行数",
   "Dependency map": "依赖关系图",
   Critical: "关键路径",
@@ -196,7 +196,7 @@ const translations = {
   Yes: "是",
   No: "否",
   "Simulation complete.": "模拟执行完成",
-  "Unable to load example": "无法加载示例",
+  "Unable to load example": "无法载入工作流模板",
   "Workflow files must be under 256 KiB": "工作流文件必须小于 256 KiB",
   ready: "就绪",
   running: "执行中",
@@ -383,6 +383,9 @@ const translations = {
   "↺ Reset sample": "还原示例",
 };
 const englishCopy = {
+  Example: "Workflow template",
+  "Reset example": "Reset workflow",
+  "Unable to load example": "Unable to load workflow template",
   "Workflow planner": "Task planner",
   "Resilience playground": "Async console",
   "Explore structures, resolve paths and compare documents.":

@@ -8,7 +8,7 @@ An interactive map of dependencies, critical paths and worker schedules.
 
 用依赖图和时间轴，理解任务排期、关键路径与并行执行。
 
-**[Live demo](https://chenpingan-dev.github.io/flow-atlas/)** · **[中文说明](README.zh-CN.md)** · [Contributing](CONTRIBUTING.md) · [Changelog](CHANGELOG.md)
+**[Open workflow planner](https://chenpingan-dev.github.io/flow-atlas/)** · **[中文说明](README.zh-CN.md)** · [Contributing](CONTRIBUTING.md) · [Changelog](CHANGELOG.md)
 
 ![Working application screenshot](assets/screenshot.png)
 

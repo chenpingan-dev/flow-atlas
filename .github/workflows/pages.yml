@@ -1,4 +1,4 @@
-name: Deploy demo
+name: Publish workflow planner
 on:
   push:
     branches: [main]

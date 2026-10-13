@@ -2,7 +2,7 @@
 
 用依赖图和时间轴，理解任务排期、关键路径与并行执行。
 
-[在线演示](https://chenpingan-dev.github.io/flow-atlas/) · [English](README.md)
+[打开流程规划器](https://chenpingan-dev.github.io/flow-atlas/) · [English](README.md)
 
 ![项目实际运行截图](assets/screenshot.png)
 
